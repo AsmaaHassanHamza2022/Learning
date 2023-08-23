@@ -1,0 +1,21 @@
+<div class="Gallary-container">
+    <div class="main-image" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngStyle]="{backgroundImage:'url('+selectedMainImages+')'}" >
+      <div class="controls" *ngIf="isGallaryInModalMode">
+        <div class="control previous-Image" [class.preventAction]="preventgetPreviousAction" (click)="getPerviousImage()">
+            <i class="bi bi-arrow-left"></i>
+        </div>
+        <div class="control next-Image" [class.preventAction]="preventGetNextAction" (click)="getNextImage()">
+            <i class="bi bi-arrow-right"></i>
+
+        </div>
+      </div>
+       <!-- <img class="w-100 h-100" [src]="selectedMainImages" alt="name"/> -->
+    </div>
+    <div class="thumbnail-images">
+        <div class="thumbnail-image"  *ngFor="let thumbnail of thumbnailImages ;let i=index" (click)="onChangeMainImage(i)">
+            <img class="w-100 h-100" [class.selected]="thumbnail.selected" [src]="thumbnail.image" [alt]="thumbnail.image"/>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,57 @@
+@import "../../../../assets/styles/helpers/variables.scss";
+.navbar {
+  .row {
+    border-bottom: 1px solid $GrayishBlue;
+    position: relative;
+    .left-side {
+      display: flex;
+      align-items: center;
+      .navbar-toggler {
+        border: none;
+        box-shadow: none;
+      }
+      .links {
+        ul {
+          li {
+            &:hover {
+              border-bottom: 2px solid $Primary-color;
+            }
+            a {
+              text-decoration: none;
+              color: $GrayishBlue;
+              &:hover {
+                color: $DarkGayishBlue;
+                font-weight: 700;
+              }
+            }
+          }
+          @media (max-width: 550px) {
+            flex-direction: column;
+            gap:10px;
+          }
+        }
+        @media (max-width: 992px) {
+            position: absolute;
+            top: 90%;
+            left: 50%;
+            background-color: #fff;
+            border: 1px solid #eee;
+            padding: 10px;
+            transform: translateX(-50%);
+            width: 80%;
+        }
+      }
+    }
+    .right-side {
+      align-items: center;
+      justify-content: space-evenly;
+
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border: 2px solid $Primary-color;
+        border-radius: 50%;
+      }
+    }
+  }
+}
