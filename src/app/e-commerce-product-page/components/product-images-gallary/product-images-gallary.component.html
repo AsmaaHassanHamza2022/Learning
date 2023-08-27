@@ -1,6 +1,6 @@
 <div class="Gallary-container">
-    <div class="main-image" data-bs-toggle="modal" data-bs-target="#exampleModal" [ngStyle]="{backgroundImage:'url('+selectedMainImages+')'}" >
-      <div class="controls" *ngIf="isGallaryInModalMode">
+    <div class="main-image" (click)="openModal()" [ngStyle]="{backgroundImage:'url('+selectedMainImages+')'}" >
+      <div class="controls" *ngIf="isGallaryInModalMode ||isGallaryInMobileMode">
         <div class="control previous-Image" [class.preventAction]="preventgetPreviousAction" (click)="getPerviousImage()">
             <i class="bi bi-arrow-left"></i>
         </div>

@@ -1,0 +1,27 @@
+<div class="wrapper">
+    <div class="product-details">
+        <h4>{{productDetails.brandName |uppercase}}</h4>
+        <h2>{{productDetails.productName}}</h2>
+        <p>{{productDetails.productDescription}}</p>
+        <div class="price-section">
+            <div class="price-after-discount">
+                <div class="price">
+                    <span>{{sellingPrice |currency}}</span>
+                </div>
+                <div class="discount">
+                    <span>{{productDetails.discount}} %</span>
+                </div>
+            </div>
+            <div class="main-price">
+                <span>{{productDetails.productPrice |currency}}</span>
+            </div>
+        </div>
+        <div class="actions my-5">
+            <app-counter (ChangeProductCount)="onProductCountChange($event)" [counterValue]="productCount"></app-counter>
+            <button (click)="onAddToCart()" class="addTocart">
+                <img src="../../../../assets/images/E_commerce-product-page/icon-cart.svg" alt="cart" />
+                <span>Add to cart</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 export enum GallaryMode{
     Flat,
-    Modal
+    Modal,
+    Mobile
 
 }

@@ -46,6 +46,24 @@
       align-items: center;
       justify-content: space-evenly;
 
+      .cart{
+        position: relative;
+        cursor: pointer;
+        span{
+          position: absolute;
+          width:15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: $Primary-color;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #fff;
+          font-size: 8px;
+          top:-5px;
+          right:-5px;
+        }
+      }
       .user-avatar {
         width: 40px;
         height: 40px;
@@ -53,5 +71,16 @@
         border-radius: 50%;
       }
     }
+  }
+}
+
+::ng-deep .dropdown-menu.show{
+  width:400px;
+  top: 200%;
+  left: -200px;
+  @media (max-width:480px){
+    width: 304px;
+    left: -206px;
+
   }
 }

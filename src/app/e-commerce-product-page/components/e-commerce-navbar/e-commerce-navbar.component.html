@@ -23,10 +23,16 @@
 
                     </div>
                 </div>
-                <div class="right-side d-flex col-md-2 col-4">
-                    <div class="cart ">
-                        <img src="../../../../assets/images/E_commerce-product-page/icon-cart.svg" />
-                    </div>
+                <div class="right-side dropdown d-flex col-md-2 col-4">
+                    <div class="dropdown">
+                        <div class="cart " id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span *ngIf="cartItemsCount">{{cartItemsCount}}</span>
+                            <img src="../../../../assets/images/E_commerce-product-page/icon-cart.svg" />
+                        </div>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <app-cart></app-cart>
+                        </ul>
+                      </div>
                     <div class="user-avatar">
                         <img class="w-100 h-100"
                             src="../../../../assets/images/E_commerce-product-page/image-avatar.png" />

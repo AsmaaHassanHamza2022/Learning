@@ -8,19 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
- 
-  ngOnInit(): void {
-  }
-  icon = 'home';
-
-  onIconSelect(icon: string) {
-    console.log(icon);
-    this.icon = icon;
-  }
-
-  
-  constructor(public mainService:MainService){
-
-  }
+  ngOnInit(): void {}
+  constructor(public mainService:MainService){}
   title = 'Learning';
 }

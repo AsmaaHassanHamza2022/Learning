@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { IGallaryItem, IthumbnailImage } from '../../models/interfaces';
 import { GallaryMode } from '../../Enums/gallaryMode';
-import { flush } from '@angular/core/testing';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-product-images-gallary',
@@ -35,13 +35,15 @@ export class ProductImagesGallaryComponent implements OnInit {
   ];
   public selectedMainImages: string = '';
   public thumbnailImages: IthumbnailImage[] = [];
+  public mode:GallaryMode = GallaryMode.Flat;
 
 
   // for gallary Modal logic
-  public preventGetNextAction:boolean=false;
-  public preventgetPreviousAction:boolean=false;
+  public preventGetNextAction: boolean = false;
+  public preventgetPreviousAction: boolean = false;
 
   ngOnInit(): void {
+    this.checkWindowWidth();
     this.selectedMainImages = this.mainImages[0];
     this.thumbnailImages = this.gallaryImages.map((item, i) => {
       if (i == 0) {
@@ -49,6 +51,7 @@ export class ProductImagesGallaryComponent implements OnInit {
       }
       return { image: item.thumbnailImage, selected: false };
     });
+    this.checkActionsAvaiablity();
   }
   onChangeMainImage(ImageIndex: number) {
     this.selectedMainImages = this.mainImages[ImageIndex];
@@ -66,15 +69,17 @@ export class ProductImagesGallaryComponent implements OnInit {
     });
   }
   getPerviousImage() {
-    const currentMainImageIndex=this.mainImages.findIndex((item)=>item == this.selectedMainImages);
-    this.preventGetNextAction=false;
-    if(currentMainImageIndex == 0){
-      this.preventgetPreviousAction=true;
-      return ;
+    const currentMainImageIndex = this.mainImages.findIndex(
+      (item) => item == this.selectedMainImages
+    );
+    this.preventGetNextAction = false;
+    if (currentMainImageIndex == 0) {
+      this.preventgetPreviousAction = true;
+      return;
     }
-    this.preventgetPreviousAction=false;
-    this.selectedMainImages=this.mainImages[currentMainImageIndex-1]
-    this.changeSelectedThumbnail(currentMainImageIndex-1)
+    this.preventgetPreviousAction = false;
+    this.selectedMainImages = this.mainImages[currentMainImageIndex - 1];
+    this.changeSelectedThumbnail(currentMainImageIndex - 1);
   }
   getNextImage() {
     //#region
@@ -85,31 +90,56 @@ export class ProductImagesGallaryComponent implements OnInit {
           -not last bring Image with next index
     */
     //#endregion
-    const currentMainImageIndex=this.mainImages.findIndex((item)=>item == this.selectedMainImages);
-    this.preventgetPreviousAction=false;
+    const currentMainImageIndex = this.mainImages.findIndex(
+      (item) => item == this.selectedMainImages
+    );
+    this.preventgetPreviousAction = false;
 
-    if(currentMainImageIndex == this.mainImages.length -1){
-      this.preventGetNextAction=true;
+    if (currentMainImageIndex == this.mainImages.length - 1) {
+      this.preventGetNextAction = true;
 
-      return ;
+      return;
     }
-    this.preventGetNextAction=false;
-    this.selectedMainImages=this.mainImages[currentMainImageIndex+1]
-    this.changeSelectedThumbnail(currentMainImageIndex+1)
+    this.preventGetNextAction = false;
+    this.selectedMainImages = this.mainImages[currentMainImageIndex + 1];
+    this.changeSelectedThumbnail(currentMainImageIndex + 1);
   }
 
-  checkActionsAvaiablity(ImageIndex:number){
-    if(ImageIndex == 0){
-      this.preventgetPreviousAction=true;
-      this.preventGetNextAction=false;
-    }else if(ImageIndex == this.mainImages.length -1){
-      this.preventgetPreviousAction=false;
-      this.preventGetNextAction=true;
-    }else{
-      this.preventgetPreviousAction=false;
-      this.preventGetNextAction=false;
+  checkActionsAvaiablity(ImageIndex: number = 0) {
+    if (ImageIndex == 0) {
+      this.preventgetPreviousAction = true;
+      this.preventGetNextAction = false;
+    } else if (ImageIndex == this.mainImages.length - 1) {
+      this.preventgetPreviousAction = false;
+      this.preventGetNextAction = true;
+    } else {
+      this.preventgetPreviousAction = false;
+      this.preventGetNextAction = false;
     }
+  }
+  checkWindowWidth() {
+    if (window.innerWidth <= 480) {
+      this.mode = GallaryMode.Mobile;
+    }else{
+      this.mode=this.gallaryMode;
+    }
+  }
 
+  openModal(){
+    if(this.isGallaryInFlatMode){
+      var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {
+        backdrop: 'static',
+      });
+      myModal.show();
+    }
+    
+
+  }
+
+  // hostlistner method
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkWindowWidth()
   }
   //getter & setters
   get mainImages() {
@@ -117,9 +147,12 @@ export class ProductImagesGallaryComponent implements OnInit {
   }
 
   get isGallaryInFlatMode() {
-    return this.gallaryMode == GallaryMode.Flat;
+    return this.mode == GallaryMode.Flat;
   }
   get isGallaryInModalMode() {
-    return this.gallaryMode == GallaryMode.Modal;
+    return this.mode == GallaryMode.Modal;
+  }
+  get isGallaryInMobileMode() {
+    return this.mode == GallaryMode.Mobile;
   }
 }

@@ -1,0 +1,45 @@
+@import '../../../../assets/styles/helpers/variables.scss';
+.cart{
+    .cart-Header{
+        border-bottom: 1px solid #eee;
+    }
+    .cart-body{
+        .item{
+            display: flex;
+            justify-content: flex-start;
+            gap:40px;
+            align-items: center;
+            .product-image{
+              height: 50px;
+              width: 50px;
+            }
+        }
+        .product-details{
+            .product-name{
+                 color:$DarkGayishBlue;
+                 font-weight: 400;
+            }
+            .product-price{
+                span{
+                    color:$DarkGayishBlue;
+                    font-weight: 400;
+                &.bold{
+                    font-weight: 700;
+
+                }
+                }
+            }
+        }
+        .remove-product{
+            cursor: pointer;
+        }
+        .no-items{
+            height:200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:$DarkGayishBlue;
+        }
+       
+    }
+}

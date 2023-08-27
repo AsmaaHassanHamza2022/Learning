@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo:'product-page',
+    pathMatch:'full'
+  },
+  {
     path: 'product-page',
     loadChildren:()=>import(
       './e-commerce-product-page/e-commerce-product-page.module'

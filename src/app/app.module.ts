@@ -8,7 +8,6 @@ import { Test2Component } from './components/test2/test2.component';
 import { Test3Component } from './components/test3/test3.component';
 import { ReactiveFormsModule ,FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { IconPickerModule } from 'ngx-icon-picker';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { IconPickerModule } from 'ngx-icon-picker';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    IconPickerModule,
     CommonModule
     
   ],

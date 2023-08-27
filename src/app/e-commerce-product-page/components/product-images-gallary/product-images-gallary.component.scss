@@ -36,6 +36,10 @@
     display: flex;
     justify-content: space-between;
     margin: 20px 0px;
+    flex-wrap: wrap;
+    @media (max-width:480px){
+      display: none;
+    }
     .thumbnail-image {
       width: 90px;
       height: 80px;
