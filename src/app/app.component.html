@@ -3,8 +3,13 @@
 <app-test3></app-test3>
 
 <button (click)="mainService.getChangableText()">Print </button> -->
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet>
 
 <button [routerLink]="['/test']">To Test 1</button>
-<button [routerLink]="['/test2']">To Test 2</button>
+<button [routerLink]="['/test2']">To Test 2</button> -->
+
+<h1>{{'name' |translate}}</h1>
+
+
+<button (click)="changeLang()">{{currentLang == 'en' ?'Arabic':"English"}}</button>
 
