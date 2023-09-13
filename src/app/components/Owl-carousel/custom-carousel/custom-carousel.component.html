@@ -1,0 +1,23 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-4">
+            test
+        </div>
+        <div class="col-md-8">
+            <owl-carousel-o [options]="customOptions">
+                <ng-container *ngFor="let item of items">
+                    <ng-template carouselSlide>
+                        <div class="item" >
+                            <img src="../../../assets/images/E_commerce-product-page/image-product-1.jpg" />
+                            <h4>title</h4>
+                            <p>{{item}}</p>
+                            <span>compeleted</span>
+
+                        </div>
+                    </ng-template>
+                </ng-container>
+            </owl-carousel-o>
+
+        </div>
+    </div>
+</div>

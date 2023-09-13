@@ -13,6 +13,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { NavComponent } from './components/nav/nav.component';
+import {MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { CustomCarouselComponent } from './components/Owl-carousel/custom-carousel/custom-carousel.component';
+import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+
 
 
 @NgModule({
@@ -21,7 +30,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     Test1Component,
     Test2Component,
     Test3Component,
-    SideMenuComponent
+    SideMenuComponent,
+    SideNavComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +43,14 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSidenavModule,
+    MatListModule,
+    MatTooltipModule,
+    CustomCarouselComponent,
+    RouterModule,
+    CarouselModule 
+
     
     
   ],

@@ -2,6 +2,8 @@
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'material-icons/iconfont/material-icons.scss';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 body{
     font-family: 'Kumbh Sans', sans-serif;
     font-family: 'Rubik', sans-serif;
@@ -9,3 +11,11 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// override material inline style to allow mini nav state
+mat-sidenav[style] {
+  visibility: visible !important;
+}
+.mat-drawer {
+  transform: none !important;
+}
