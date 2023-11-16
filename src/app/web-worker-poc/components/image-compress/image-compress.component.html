@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="lds-ripple">
+      <div></div>
+      <div></div>
+    </div>
+    <div>
+      <button (click)="compress()">Compress</button>
+      <button (click)="compressWithWorker()">Compress Worker</button>
+      <button (click)="reset()">Reset</button>
+    </div>
+    <img [src]="imgUrl" />
+  </div>

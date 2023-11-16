@@ -9,6 +9,20 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class AppComponent {
   ngOnInit(): void {}
-  constructor(public mainService:MainService){}
+  // constructor(public mainService:MainService){}
   title = 'Learning';
+   i=0;
+
+  onClickBtn(){
+
+    this.title="asmaa" + this.i;
+    this.i++;
+    console.log("Hi")
+  }
+
+
+  getTitle(){
+    console.log("Iam called Now! ")
+    return this.title
+  }
 }
